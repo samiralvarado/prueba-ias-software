@@ -1,0 +1,39 @@
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: maintenance-reactive-api
+  cloud:
+    aws:
+      region:
+        static: us-east-1
+      credentials:
+        access-key: test
+        secret-key: test
+      dynamodb:
+        endpoint: http://localhost:4566
+        enabled: true
+  data:
+    dynamodb:
+      entity2ddl:
+        auto: create
+      endpoint: http://localhost:4566
+      region: us-east-1
+
+jwt:
+  secret: mySuperSecretKeyForJWTTokenGenerationInMaintenanceApp2024
+
+aws:
+  secrets:
+    database: '{"username":"test-user","password":"test-pass","host":"localhost","port":"5432","database":"maintenance_db"}'
+
+logging:
+  level:
+    com.company.maintenance: DEBUG
+    io.awspring.cloud: DEBUG
+    org.springframework.data.dynamodb: DEBUG
+    software.amazon.awssdk: DEBUG
+    com.amazonaws: DEBUG
+
+server:
+  port: 8080

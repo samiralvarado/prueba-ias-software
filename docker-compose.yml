@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack-maintenance
+    ports:
+      - "4566:4566"   # LocalStack main port
+    environment:
+      - SERVICES=dynamodb,secretsmanager
+      - DEFAULT_REGION=us-east-1
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+      - EDGE_PORT=4566
+    volumes:
+      - "./localstack:/docker-entrypoint-initaws.d"
